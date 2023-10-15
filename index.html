@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tread Tales One Step Point</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Product Sans', sans-serif;
+            background-image: url('footprint-shoe.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Splash screen styles */
+        .splash-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+        }
+
+        .splash-logo {
+            max-width: 200px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            max-width: 60px;
+            margin-right: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        .content {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 36px; /* Reduced font size */
+            font-family: 'Arial Black', sans-serif;
+            color: #FF5733;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 24px;
+            color: #fff; /* White text color */
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #FF5733;
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        /* Container for the shoe images */
+        .shoe-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .shoe-item {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.3s, filter 0.3s;
+            overflow: hidden;
+        }
+
+        .shoe-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        /* Enlarge effect on hover */
+        .shoe-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .preview-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .preview-image {
+            max-width: 80%;
+            max-height: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Show preview on hover */
+        .shoe-item:hover + .preview-overlay {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash screen with your brand logo -->
+    <div class="splash-screen">
+        <img class="splash-logo" src="logo.png" alt="Tread Tales Logo">
+    </div>
+
+    <header>
+        <img class="logo" src="logo.png" alt="Tread Tales Logo">
+        <h1>Tread Tales One Step Point</h1>
+    </header>
+    <div class="container">
+        <div class="shoe"></div>
+        <div class="content">
+            <h1>Step into Style</h1>
+            <p>Explore the latest trends in footwear and discover the perfect pair for your journey.</p>
+            <a href="#shop" class="cta-button">Shop Now</a>
+        </div>
+    </div>
+    <!-- Container for the shoe images -->
+    <div class="shoe-container">
+        <!-- 5 different shoe images with clickable links -->
+        <div class="shoe-item">
+            <img src="1.jpg" alt="Shoe 1">
+        </div>
+        <div class="shoe-item">
+            <img src="2.png" alt="Shoe 2">
+        </div>
+        <div class="shoe-item">
+            <img src="3.png" alt="Shoe 3">
+        </div>
+        <div class="shoe-item">
+            <img src="4.jpg" alt="Shoe 4">
+        </div>
+        <div class="shoe-item">
+            <img src="5.jpg" alt="Shoe 5">
+        </div>
+    </div>
+    <!-- Preview Overlay for Enlarged Images -->
+    <div class="preview-overlay">
+        <img class="preview-image" src="" alt="Preview Image">
+    </div>
+    <script>
+        // JavaScript to hide the splash screen after 3 seconds
+        setTimeout(function () {
+            const splashScreen = document.querySelector('.splash-screen');
+            splashScreen.style.display = 'none';
+        }, 3000);
+
+        // JavaScript to handle image preview on hover
+        const shoeItems = document.querySelectorAll('.shoe-item');
+        const previewOverlay = document.querySelector('.preview-overlay');
+        const previewImage = document.querySelector('.preview-image');
+
+        shoeItems.forEach((shoeItem, index) => {
+            shoeItem.addEventListener('mouseenter', () => {
+                previewImage.src = shoeItem.querySelector('img').src;
+            });
+        });
+    </script>
+</body>
+</html>
